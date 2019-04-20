@@ -11,7 +11,7 @@ import java.util.Date;
  * LogCreate
  * <p>
  * ログを作成するクラス。
- * @author nishi
+ * @author tkwest3143
  *
  */
 public class LogCreate {

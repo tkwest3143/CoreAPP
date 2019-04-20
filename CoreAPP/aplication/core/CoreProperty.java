@@ -8,7 +8,7 @@ import java.util.Properties;
  * CoreProperty
  * <p>
  *
- * @author nishi
+ * @author tkwest
  *
  */
 public class CoreProperty {

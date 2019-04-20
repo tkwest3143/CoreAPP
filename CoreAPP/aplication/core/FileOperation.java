@@ -11,7 +11,7 @@ import java.io.InputStream;
  * FileOperation
  * <p>
  * ファイル操作を行う共通のクラス。
- * @author nishi
+ * @author tkwest
  *
  */
 public class FileOperation {

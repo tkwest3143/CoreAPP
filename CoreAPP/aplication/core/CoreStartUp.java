@@ -6,7 +6,7 @@ package core;
  * CoreAPP内で実際に実行するクラスの規定となるクラス
  * <p>
  * 処理内容はstart->excecute->excecuteStartという順で執行される
- * @author nishi
+ * @author tkwest
  *
  */
 public abstract class CoreStartUp {

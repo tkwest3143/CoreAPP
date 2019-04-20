@@ -3,7 +3,7 @@ package systemTest;
 import core.CoreStartUp;
 
 /**
- * @author nishi
+ * @author tkwest3143
  *
  */
 public class Test extends CoreStartUp{

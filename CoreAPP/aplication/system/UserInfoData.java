@@ -6,7 +6,7 @@ import core.CoreStartUp;
  * UserInfoData
  * <p>
  * ユーザー情報をjsonファイルから取得し、DBに格納する
- * @author nishi
+ * @author tkwest3143
  *
  */
 public class UserInfoData extends CoreStartUp {
@@ -17,6 +17,12 @@ public class UserInfoData extends CoreStartUp {
 
 	}
 
+	/**
+	 * メインメソッド
+	 * <p>
+	 * @param args
+	 * 					コマンドライン引数
+	 */
 	public static void main(String[] args) {
 		// TODO 自動生成されたメソッド・スタブ
 
