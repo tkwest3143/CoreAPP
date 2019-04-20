@@ -2,6 +2,13 @@ package system;
 
 import core.CoreStartUp;
 
+/**
+ * UserInfoData
+ * <p>
+ * ユーザー情報をjsonファイルから取得し、DBに格納する
+ * @author nishi
+ *
+ */
 public class UserInfoData extends CoreStartUp {
 
 	@Override
