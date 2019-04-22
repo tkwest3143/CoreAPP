@@ -11,19 +11,24 @@ import java.util.Date;
  * LogCreate
  * <p>
  * ログを作成するクラス。
+ * @version 1.00
  * @author tkwest3143
  *
  */
 public class LogCreate {
 	private StringBuilder sb=new StringBuilder();
-	private String logMessage;
-	private String logLevel;
+	private String logMessage;//ログメッセージのキー
+	private String logLevel;//ログ出力レベル
 	private final String file="C://config/log.properties";
 	private final String logDir="START_UP_LOGDIR";
 	private final String logfile="START_UP_LOGNAME";
 
 	/**
+	 * ログを出力するためのメソッド
+	 * <p>
+	 * 引数に設定されているログの出力レベルとメッセージのキーを引数として設定し、ログを書いていく。
 	 * @param logLevel
+	 * 					ログに出力するメッセージのレベル
 	 * @param logMessage
 	 * 					ログに出力するメッセージ
 	 */

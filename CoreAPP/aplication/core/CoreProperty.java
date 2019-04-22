@@ -7,18 +7,23 @@ import java.util.Properties;
 /**
  * CoreProperty
  * <p>
- *
+ *Propertiesファイルからキーに設定された値を読み込み、取得するためのクラス
  * @author tkwest
  *
  */
 public class CoreProperty {
 
+	//取得する値
 	private String value;
+	//プロパティのインスタンス化
 	private Properties prop=new Properties();
+	//プロパティファイルのパス
 	private String file="CoreAPP/config/dbconf.properties";
 
 	/**
 	 * コンストラクタ
+	 * <p>
+	 * 引数に設定されているファイルのパスを指定し、InputStreamでプロパティファイルを読み込む。
 	 * @param file
 	 * 						propertyファイルのパスを設定
 	 *
@@ -30,7 +35,7 @@ public class CoreProperty {
 			prop.load(iS);
 			iS.close();
 		}catch(Exception e) {
-			e.printStackTrace();
+			new CoreException("IOEXCEPTION");
 		}
 	}
 	/**
