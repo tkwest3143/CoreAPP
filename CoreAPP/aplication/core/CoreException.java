@@ -1,5 +1,7 @@
 package core;
 
+import core.LogCreate.LogLevel;
+
 /**
  * クラス名：CoreException
  * <p>
@@ -21,7 +23,7 @@ public class CoreException extends Exception {
 	 * 					例外発生時のエラーメッセージ
 	 */
 	public CoreException (String ErrMsg) {
-		this.log.logMessage("E", ErrMsg);
+		this.log.logMessage(LogLevel.ERROR, ErrMsg);
 	}
 
 }

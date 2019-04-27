@@ -1,6 +1,8 @@
 package systemTest;
 
 import core.CoreStartUp;
+import core.LogCreate;
+import core.LogCreate.LogLevel;
 
 /**
  * @author tkwest3143
@@ -8,10 +10,15 @@ import core.CoreStartUp;
  */
 public class Test extends CoreStartUp{
 
+
+	/*
+	 * @see core.CoreStartUp#executeStart()
+	 */
 	@Override
 	public void executeStart() {
 		System.out.println("test");
-
+		LogCreate log=new LogCreate();
+		log.logMessage(LogLevel.INFO, "IOEXCEPTION");
 	}
 
 	/**

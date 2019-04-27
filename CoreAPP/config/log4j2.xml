@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration status="OFF">
+
+<Properties>
+	<!--  ログ出力のディレクトリ、ファイル名、出力パターンを記述 -->
+	<Property name="logDir">C:\\log\</Property>
+	<Property name="consoleLogname">${logDir}consolelog-${date:yyyyMMdd}.log</Property>
+	<Property name="infoLogname">${logDir}infolog-${date:yyyyMMdd}.log</Property>
+	<Property name="errorLogname">${logDir}errorlog-${date:yyyyMMdd}.log</Property>
+	<Property name="pattern">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+</Properties>
+	<!-- コンソール出力のためのAppender -->
   <appenders>
     <Console name="Console" target="SYSTEM_OUT">
-      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+      <PatternLayout pattern="${pattern}"/>
     </Console>
+    <File name="fileAppender" fileName="${consoleLogname}">
+    	<PatternLayout pattern="${pattern}"/>
+    </File>
+    <File name="errorAppender" fileName="${errorLogname}">
+			<PatternLayout pattern="${pattern}"/>
+		</File>
   </appenders>
-
   <loggers>
-    <root level="trace">
+    <root level="all">
       <appender-ref ref="Console"/>
+      <appender-ref ref="fileAppender"/>
+      <appender-ref ref="errorAppender" level="error"/>
     </root>
   </loggers>
 </configuration>

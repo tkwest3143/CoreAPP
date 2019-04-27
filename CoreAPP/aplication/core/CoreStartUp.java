@@ -1,5 +1,7 @@
 package core;
 
+import core.LogCreate.LogLevel;
+
 /**
  * CoreStartUp
  * <p>
@@ -16,9 +18,11 @@ public abstract class CoreStartUp {
 	 *実行
 	 */
 	private void execute() {
-		log.logMessage("I", "STARTUP");
+
 		//実処理実行
 		this.executeStart();
+		//終了処理
+		log.logMessage(LogLevel.INFO, "APPLICATION_END");
 	}
 
 	/**
@@ -33,8 +37,10 @@ public abstract class CoreStartUp {
 	 * <p>
 	 * 実行メソッド
 	 * @param startUpId
+	 *			実行するアプリケーションのID
 	 */
 	public void start(String startUpId) {
+		log.logMessage(LogLevel.INFO, "STARTUP");
 		this.execute();
 	}
 

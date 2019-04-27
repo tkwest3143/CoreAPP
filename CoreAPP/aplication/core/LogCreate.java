@@ -1,11 +1,9 @@
 package core;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 
 /**
  * LogCreate
@@ -16,65 +14,58 @@ import java.util.Date;
  *
  */
 public class LogCreate {
-	private StringBuilder sb=new StringBuilder();
+	private final Logger logger = LogManager.getLogger();//ロガー
 	private String logMessage;//ログメッセージのキー
-	private String logLevel;//ログ出力レベル
-	private final String file="C://config/log.properties";
-	private final String logDir="START_UP_LOGDIR";
-	private final String logfile="START_UP_LOGNAME";
+	private  LogLevel logLevel;//ログ出力レベル
 
+	/**
+	 * LogLevel
+	 * <p>
+	 * logに出力するレベルを定義
+	 * </p>
+	 * 今回はinfoとerrorの２種類のみを採用
+	 * @author tkwest3143
+	 *
+	 */
+	public enum LogLevel {
+		/**
+		 * 起動中の状態などを記述
+		 */
+		INFO,
+		/**
+		 * 発生したExceptionなどのエラーはすべて記述
+		 */
+		ERROR,
+	}
 	/**
 	 * ログを出力するためのメソッド
 	 * <p>
 	 * 引数に設定されているログの出力レベルとメッセージのキーを引数として設定し、ログを書いていく。
 	 * @param logLevel
-	 * 					ログに出力するメッセージのレベル
+	 * 					ログに出力するメッセージのレベル<br>
+	 * 					使用できるレベルはinfoとerrorのみ
 	 * @param logMessage
 	 * 					ログに出力するメッセージ
 	 */
-	public void logMessage(String logLevel,String logMessage) {
+	public void logMessage(LogLevel logLevel,String logMessage) {
 		this.logLevel=logLevel;
 		this.logMessage=logMessage;
-		try {
 			this.buildLogMessage();
-			this.logWrite();
-		}catch(IOException e) {
-			System.out.println("IOException");
-		}
-
 	}
-	private void logWrite() throws IOException{
 
-		CoreProperty prop=new CoreProperty(file);
-		try {
-			//プロパティファイルからFileWriterを作成
-		FileWriter fw=new FileWriter(prop.PropValue(this.logDir)+prop.PropValue(this.logfile));
-		PrintWriter pw=new PrintWriter(new BufferedWriter(fw));
-		//ログを書いていく
-		pw.println(this.sb);
-
-		closePrintWriter(pw);
-		}catch(IOException e) {
-			throw new IOException();
-		}
-	}
+	/**
+	 * ログを一行出力するための文字列を生成するメソッド
+	 */
 	private void buildLogMessage() {
-		Date date=new Date();
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		String nowtime=sdf.format(date);
-		this.sb.append("[");
-		this.sb.append(nowtime);
-		this.sb.append("]");
-		this.sb.append("-");
-		this.sb.append(this.logLevel);
-		this.sb.append("-");
-		this.sb.append(this.logMessage);
-	}
-	private void closePrintWriter(PrintWriter pw) throws IOException{
-		if(pw!=null) {
-			pw.close();
-		}else {
-			this.logMessage("E","FILECLOSE_NULL");
+		//ログ出力文字列の初期化処理
+		switch(this.logLevel) {
+		case INFO:
+			this.logger.info(this.logMessage);
+			break;
+		case ERROR:
+			this.logger.error(this.logMessage);
+			break;
+		default:
 
 		}
 	}
