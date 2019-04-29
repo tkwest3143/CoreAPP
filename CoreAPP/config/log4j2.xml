@@ -7,7 +7,7 @@
 	<Property name="consoleLogname">${logDir}consolelog-${date:yyyyMMdd}.log</Property>
 	<Property name="infoLogname">${logDir}infolog-${date:yyyyMMdd}.log</Property>
 	<Property name="errorLogname">${logDir}errorlog-${date:yyyyMMdd}.log</Property>
-	<Property name="pattern">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+	<Property name="pattern">%d{HH:mm:ss.SSS} [%c] %-5level  - %msg%n</Property>
 </Properties>
 	<!-- コンソール出力のためのAppender -->
   <appenders>
@@ -15,10 +15,10 @@
       <PatternLayout pattern="${pattern}"/>
     </Console>
     <File name="fileAppender" fileName="${consoleLogname}">
-    	<PatternLayout pattern="${pattern}"/>
+    	<PatternLayout pattern="${pattern}" charset="UTF-8"/>
     </File>
     <File name="errorAppender" fileName="${errorLogname}">
-			<PatternLayout pattern="${pattern}"/>
+			<PatternLayout pattern="${pattern}" charset="UTF-8" />
 		</File>
   </appenders>
   <loggers>

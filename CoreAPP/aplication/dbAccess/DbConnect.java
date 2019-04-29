@@ -6,8 +6,10 @@ import java.sql.SQLException;
 
 import core.CoreException;
 import core.CoreProperty;
+import core.LogEnum;
 
 /**
+ * データベースとのコネクッションを確立するためのクラス
  * @author tkwest3143
  *
  */
@@ -16,11 +18,11 @@ public class DbConnect {
 	Connection conn=null;
 
 	//DB接続のための基本設定(dbconf.propertiesファイルからの読み込み)
-	String username=prop.PropValue("username");
-	String dbname=prop.PropValue("dbname");
-	String password=prop.PropValue("password");
-	String port=prop.PropValue("port");
-	String host=prop.PropValue("host");
+	private final String username=prop.PropValue("username");
+	private String dbname=prop.PropValue("dbname");
+	private final String password=prop.PropValue("password");
+	private final String port=prop.PropValue("port");
+	private final String host=prop.PropValue("host");
 
 
 	/**
@@ -28,14 +30,14 @@ public class DbConnect {
 	 * <p>
 	 * @param dbname 接続するDB名
 	 */
-	public void setConnection(String dbname) {
+	public void setConnect(String dbname) {
 		this.dbname=dbname;
 		try {
 			this.conn=DriverManager.getConnection(
 					"jdbc:postgresql://"+this.host+this.port+"/"+this.dbname, this.username, this.password
 					);
 		}catch(SQLException e) {
-			new CoreException("SQLEXCEPTION");
+			new CoreException(LogEnum.SQLEXCEPTION,e);
 		}
 	}
 	/**
@@ -54,7 +56,7 @@ public class DbConnect {
 	 * @return closeに成功したか失敗したか
 	 * @throws SQLException SQLコネクションを閉じるのに失敗した場合の例外
 	 */
-	public boolean closeConnection(Connection conn) throws SQLException {
+	public boolean closeConnect(Connection conn) throws SQLException {
 		if(conn!=null) {
 			conn.close();
 			return true;
