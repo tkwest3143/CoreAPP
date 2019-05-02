@@ -34,6 +34,7 @@ public class CoreException extends Exception {
 	public CoreException (String ErrMsg) {
 		super();
 		this.log.logMessage(LL,ErrMsg);
+		return;
 	}
 
 	/**
@@ -52,6 +53,7 @@ public class CoreException extends Exception {
 	public CoreException(String Message,Throwable e) {
 		super(e);
 		log.logMessage(Message,e);
+		return;
 	}
 
 	/**
@@ -69,6 +71,7 @@ public class CoreException extends Exception {
 	 */
 	public CoreException(LogEnum logMessage,Throwable e) {
 		log.logMessage(logMessage,e);
+		return;
 	}
 
 

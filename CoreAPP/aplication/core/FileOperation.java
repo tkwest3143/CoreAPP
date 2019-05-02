@@ -1,10 +1,8 @@
 package core;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -27,8 +25,6 @@ public class FileOperation {
 	private String file;
 	private InputStream is;
 	private BufferedReader br;
-	private BufferedOutputStream bos;
-	private FileWriter fw;
 	LogCreate log=new LogCreate(this.getClass().getName());//ログ出力のためのクラス
 	/**
 	 * FileSelect
@@ -116,13 +112,16 @@ public class FileOperation {
 	 * 以下を参照<br>
 	 * <p>
 	 * [CSV]<br>
-	 * カンマと改行でcsvファイルを記述。
+	 * カンマと改行でcsvファイルを記述。<br>
+	 * {@link core.FileOperation#writeCsvFile csvファイルを書き込むメソッド詳細}
 	 * </p><p>
 	 * [DAT]<br>
-	 * 2次元か３次元配列をinputDataに設定することでファイルに記述する。
+	 * 2次元か３次元配列をinputDataに設定することでファイルに記述する。<br>
+	 * {@link core.FileOperation#writeDatFile datファイルを書き込むメソッド詳細}
 	 * </p><p>
 	 * [TXT]<br>
-	 * inputDataの内容をそのままtxtファイルに記述する。
+	 * inputDataの内容をそのままtxtファイルに記述する。<br>
+	 * {@link core.FileOperation#writeTxtFile txtファイルを書き込むメソッド詳細}
 	 * </p>
 	 * @param fileSelect ファイル操作のための区分
 	 * @param inputData ファイルに書き込むデータ
@@ -187,8 +186,40 @@ public class FileOperation {
 		 }
 	}
 
+	/**
+	 * CSVファイルを作成するためのメソッド
+	 * <p>
+	 * inputされたデータを型変換し、CSVファイルを作成します。<br>
+	 * Listが引数として設定されているとひとつづつ読み込み、CSVファイルを作成します。<br>
+	 * Stringが設定されているとそのままファイルに書き込み、最後にカンマを書き込む。<br>
+	 * ListとString以外の型は予想していないのでエラーを出力するようにしている。
+	 * @param inputdata
+	 * @throws IOException
+	 */
 	private void writeCsvFile(Object inputdata) throws IOException{
 		//TODO CSVファイルを作成するための処理を記述して下さい。
+		FileOutputStream fos=
+				 new FileOutputStream(this.file,false);
+		 OutputStreamWriter osw=
+				 new OutputStreamWriter(fos);
+
+		 //引数のinputdataがListかどうかの判定
+		 if(inputdata instanceof ArrayList) {
+			 @SuppressWarnings("unchecked")
+			ArrayList<String> list=(ArrayList<String>)inputdata;
+			 for(String s:list) {
+				 osw.write(s);
+				 if(!s.equals(System.lineSeparator()))
+				 osw.write(",");
+			 }
+		 }else if(inputdata==(Class<?>)String.class) {
+			String str=(String)inputdata;
+			osw.write(str);
+			osw.write(",");
+		 }else {
+			 //TODO 引数がList、Stringではないとき
+		 }
+		 osw.close();
 	}
 
 }

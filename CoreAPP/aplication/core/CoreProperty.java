@@ -72,4 +72,12 @@ public class CoreProperty {
 		return false;
 	}
 
+	/**
+	 * プロパティのインスタンスを取得する。
+	 * @return {@link java.util.Properties}
+	 */
+	public Properties getProperties() {
+		return this.prop;
+	}
+
 }

@@ -7,5 +7,10 @@
 	<classpathentry kind="lib" path="Lib/postgresql-42.2.5.jar"/>
 	<classpathentry kind="lib" path="Lib/log4j-core-2.11.2.jar"/>
 	<classpathentry kind="lib" path="config"/>
+	<classpathentry kind="lib" path="Lib/imap.jar"/>
+	<classpathentry kind="lib" path="Lib/mail.jar"/>
+	<classpathentry kind="lib" path="Lib/mailapi.jar"/>
+	<classpathentry kind="lib" path="Lib/pop3.jar"/>
+	<classpathentry kind="lib" path="Lib/smtp.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

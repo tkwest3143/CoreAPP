@@ -31,6 +31,38 @@ public enum LogEnum {
 	 * データベースとの連携時に何らかのエラーが発生しました。
 	 */
 	SQLEXCEPTION(LogLevel.ERROR),
+	/**
+	 * データベースとの接続を開始します。
+	 */
+	SQLCONNECTION_START(LogLevel.INFO),
+	/**
+	 * データベースとの接続に失敗しました。
+	 */
+	SQLCONNECTION_ERROR(LogLevel.ERROR),
+	/**
+	 * データベースとの接続に成功しました。
+	 */
+	SQLCONNECTION_COMP(LogLevel.INFO),
+	/**
+	 * データベースに命令を送る際に定義されていない列挙型が指定されています。
+	 */
+	DBOPERATION_ERROR(LogLevel.ERROR),
+	/**
+	 * insertを実行します。
+	 */
+	INSERT_START(LogLevel.INFO),
+	/**
+	 * selectを実行します。
+	 */
+	SELECT_START(LogLevel.INFO),
+	/**
+	 * updateを実行します。
+	 */
+	UPDATE_START(LogLevel.INFO),
+	/**
+	 * deleteを実行します。
+	 */
+	DELETE_START(LogLevel.INFO),
 
 	//-----ファイル操作-----
 	/**
@@ -41,7 +73,6 @@ public enum LogEnum {
 	 * ファイル読み込み時にエラーが発生しました。
 	 */
 	FILEREAD_EXCEPTION(LogLevel.ERROR),
-
 	/**
 	 * ファイル書き込み時にエラーが発生しました。
 	 */
@@ -50,6 +81,25 @@ public enum LogEnum {
 	 * ファイル読み込みを開始します。
 	 */
 	FILEREAD_START(LogLevel.INFO),
+
+	//-----メール送信-----
+	/**
+	 * メール送信の設定を開始します。
+	 */
+	MAIL_START(LogLevel.INFO),
+	/**
+	 * メール送信の設定を終了します。
+	 */
+	MAIL_END(LogLevel.INFO),
+	/**
+	 * メールアドレス取得時にエラーが発生しました。
+	 */
+	ADDRESS_EXCEPTION(LogLevel.ERROR),
+
+	/**
+	 * メール送信の最中に何かしらのエラーが発生しました。
+	 */
+	MAIL_EXCEPTION(LogLevel.ERROR),
 	;
 
 	private final LogLevel logLevel;

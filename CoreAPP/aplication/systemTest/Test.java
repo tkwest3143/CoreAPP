@@ -1,10 +1,11 @@
 package systemTest;
 
-import core.CoreException;
+import java.util.HashMap;
+import java.util.Map;
+
 import core.CoreStartUp;
-import core.FileOperation;
-import core.FileOperation.FileSelect;
-import core.LogEnum;
+import core.dbAccess.DbConnect;
+import core.dbAccess.DbType;
 
 /**
  * テストを実施する際に使用するクラス
@@ -22,16 +23,19 @@ public class Test extends CoreStartUp{
 	 */
 	@Override
 	public void executeStart() {
-		System.out.println("test");
+		System.out.println("testStart!!");
 
-		int[][] inputdata= {{1,2,3},{4,5,6}};
-		FileOperation FO=new FileOperation("test");
-		FO.writeFile(FileSelect.DAT, inputdata);
-		try {
-			throw new CoreException("SQLEXCEPTION");
-		}catch(CoreException e) {
-			new CoreException(LogEnum.IOEXCEPTION,e);
-		}
+		String sqlQuery="insert into userinfo(name,born,password) values ('west1234','19951201','12345');";
+		String sqlSelect="select name from userinfo;";
+
+		Map<String,DbType> map=new HashMap<String,DbType>();
+		map.put("name", DbType.STRING);
+
+		DbConnect firstConn=new DbConnect();
+		firstConn.setConnect("LMDB");
+
+		System.out.println(getOSName());
+
 	}
 
 	/**
