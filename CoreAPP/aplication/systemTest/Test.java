@@ -3,7 +3,7 @@ package systemTest;
 import java.util.HashMap;
 import java.util.Map;
 
-import core.CoreStartUp;
+import core.common.CoreStartUp;
 import core.dbAccess.DbConnect;
 import core.dbAccess.DbType;
 
@@ -19,7 +19,7 @@ public class Test extends CoreStartUp{
 
 	/**
 	 *
-	 * @see core.CoreStartUp#executeStart()
+	 * @see core.common.CoreStartUp#executeStart()
 	 */
 	@Override
 	public void executeStart() {

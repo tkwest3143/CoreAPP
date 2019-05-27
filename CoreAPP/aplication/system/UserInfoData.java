@@ -1,6 +1,6 @@
 package system;
 
-import core.CoreStartUp;
+import core.common.CoreStartUp;
 
 /**
  * UserInfoData

@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import core.CoreException;
-import core.FileOperation;
-import core.FileOperation.FileSelect;
-import core.LogCreate;
-import core.LogEnum;
+import core.common.CoreException;
+import core.common.FileOperation;
+import core.common.LogCreate;
+import core.common.LogEnum;
+import core.common.FileOperation.FileSelect;
 
 /**
  * insert処理を記述している抽象クラス

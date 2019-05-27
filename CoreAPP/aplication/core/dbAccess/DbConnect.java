@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import core.CoreException;
-import core.CoreProperty;
-import core.LogCreate;
-import core.LogEnum;
+import core.common.CoreException;
+import core.common.CoreProperty;
+import core.common.LogCreate;
+import core.common.LogEnum;
 
 /**
  * データベースとのConnectionを確立するためのクラス

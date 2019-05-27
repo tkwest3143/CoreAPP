@@ -1,7 +1,7 @@
 package core.dbAccess;
 
-import core.LogCreate;
-import core.LogEnum;
+import core.common.LogCreate;
+import core.common.LogEnum;
 
 /**
  * DBの操作を行うための汎用クラス
